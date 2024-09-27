@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>Página de Login</title>
+    </head>
+    <body>
+        <main class="container">
+            <div class="containerLeft"></div>
+
+            <div class="containerRight">
+                <h1>Entrar</h1>
+                <form action="#">
+                    <label>
+                        Login
+                        <input type="email" placeholder="seuemail@gmail.com">
+                    </label>
+
+                    <label>
+                        Senha
+                        <input type="password" placeholder="Digite sua senha">
+                    </label>
+
+                    <p>Esqueceu a senha? <a href="#">Clique aqui!</a></p>
+
+                    <button>Fazer Login</button>
+                </form>
+            </div>
+        </main>
+        <script>
+            // Função para validar o e-mail usando uma expressão regular
+            const validateEmail = (email) => {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+            
+            // Função para validar o login ao clicar no botão
+            const handleLogin = (event) => {
+                event.preventDefault(); // Previne o comportamento padrão do formulário (recarregar a página)
+            
+                const emailInput = document.querySelector('input[type="email"]');
+                const passwordInput = document.querySelector('input[type="password"]');
+                const email = emailInput.value.trim();
+                const password = passwordInput.value.trim();
+            
+                // Validação básica de e-mail e senha
+                if (email === '' || password === '') {
+                    alert("Por favor, preencha todos os campos.");
+                    return;
+                }
+            
+                if (!validateEmail(email)) {
+                    alert("Por favor, insira um e-mail válido.");
+                    return;
+                }
+            
+                // Exemplo de verificação simples de login (simulação)
+                if (email === "seuemail@gmail.com" && password === "senha123") {
+                    alert("Login bem-sucedido!");
+                    // redirecionar para outra página ou realizar outras ações
+                    window.location.href = "dashboard.html"; // Exemplo de redirecionamento após login
+                } else {
+                    alert("E-mail ou senha incorretos.");
+                }
+            }
+            
+            // Adiciona o evento de clique no botão de login
+            document.querySelector('button').addEventListener('click', handleLogin);
+        </script>            
+    </body>
+</html>
